@@ -52,6 +52,9 @@ function getHeight (rootNode) {
   let leftSide = getHeight(rootNode.left)
   let rightSide = getHeight(rootNode.right)
 
+  // console.log("Left side: " + leftSide)
+  // console.log("Right side: " + rightSide)
+
   if (leftSide > rightSide) {
       return leftSide + 1
   } else {
@@ -60,8 +63,24 @@ function getHeight (rootNode) {
 }
 
 function balancedTree (rootNode) {
-  // Your code here
-}
+
+  if (!rootNode) return true
+  // if (rootNode.left === null && rootNode.right === null) return false
+
+  let leftSide = getHeight(rootNode.left)
+  let rightSide = getHeight(rootNode.right)
+
+  // console.log("ls :" + leftSide)
+  // console.log("rs :" + rightSide)
+
+  if (Math.abs(leftSide - rightSide) > 1) {
+      return false
+      
+  } else {
+      return balancedTree(rootNode.left) && balancedTree(rootNode.right)
+    }
+  }
+  
 
 function countNodes (rootNode) {
   // Your code here
@@ -98,6 +117,16 @@ function deleteNodeBST(rootNode, target) {
   //   Make the parent point to the child
 
 }
+
+// bstRoot = new TreeNode(4);
+//     bstRoot.left = new TreeNode(2);
+//     bstRoot.left.left = new TreeNode(1);
+//     bstRoot.left.right = new TreeNode(3);
+//     bstRoot.right = new TreeNode(6);
+//     bstRoot.right.left = new TreeNode(5);
+//     bstRoot.right.right = new TreeNode(7);
+
+//   console.log(balancedTree(bstRoot.left))
 
 module.exports = {
     findMinBST,
