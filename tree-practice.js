@@ -75,15 +75,37 @@ function balancedTree (rootNode) {
 
   if (Math.abs(leftSide - rightSide) > 1) {
       return false
-      
+
   } else {
       return balancedTree(rootNode.left) && balancedTree(rootNode.right)
     }
   }
-  
+
 
 function countNodes (rootNode) {
   // Your code here
+    let num = 1
+
+    if (!rootNode) return 0
+    num += countNodes(rootNode.left)
+    num += countNodes(rootNode.right)
+    return num
+
+  // if (rootNode.left === null && rootNode.right === null) return 0
+
+
+
+  // let leftSide = getHeight(rootNode.left) +1
+  // let rightSide = getHeight(rootNode.right)
+
+  // console.log("ls :" + leftSide)
+  // console.log("rs :" + rightSide)
+
+  // let sum = rightSide + leftSide
+
+  // console.log(sum)
+  // return sum
+
 }
 
 function getParentNode (rootNode, target) {
